@@ -1,4 +1,4 @@
-package com.acm.problemhelper;
+package com.acm.helper;
 
 import java.util.List;
 import java.util.ArrayList;
