@@ -1,4 +1,4 @@
-package com.acm.problemhelper;
+package com.acm.helper;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -32,6 +32,6 @@ public class InputHelper {
 			inputFile = args[0];
 		}
 		String[] inputOptions = InputHelper.getInputOptions();
-		
+		return new Scanner(System.in);
 	}
 }
