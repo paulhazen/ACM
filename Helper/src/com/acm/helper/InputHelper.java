@@ -9,6 +9,17 @@ import java.io.FileNotFoundException;
 public class InputHelper {
 	private static final String INPUT_FOLDER = "../../InputOutput/Input/";
 
+	public static List<File> getInputOptions() {
+		List<File> inputOptions = new ArrayList<File>();
+
+		File inputDirectory = new File(INPUT_FOLDER);
+		
+		if(inputDirectory.exists())
+			inputOptions.addAll(inputDirectory.listFiles());
+				
+		return inputOptions;	
+	}
+
 	public static String[] getInputOptions() {
 		File inputDirectory = new File(INPUT_FOLDER);
 		String[] inputOptions;
@@ -19,7 +30,7 @@ public class InputHelper {
 			File[] inputFiles = inputDirectory.listFiles();
 			inputOptions = new String[inputFiles.length];
 			for(int i = 0; i < inputFiles.length; i++) {
-				inputOptions[i] = inputFiles[i].getName();
+				inputOptions[i] = inputFiles[i].getName().toLower();
 			}
 		}
 
@@ -27,11 +38,19 @@ public class InputHelper {
 	}
 
 	public static Scanner getInput(String[] args) {
-		String inputFile = "";
-		if(0 != args.length) {
-			inputFile = args[0];
+		List<String> inputOptions = new ArrayList<String>(InputHelper.getInputOptions());
+		inputOptions.add("[Enter for manual]");
+
+		Scanner userFeedback = new Scanner(System.in);
+		String inputOption = "";
+		
+		while(!inputOptions.contains(inputOption)) {
+			System.out.print("Select your input (or nothing to type input): ");
+			inputOption = userFeedback.nextLine();
 		}
-		String[] inputOptions = InputHelper.getInputOptions();
+
+		
+
 		return new Scanner(System.in);
 	}
 }

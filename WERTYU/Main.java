@@ -1,3 +1,4 @@
+import com.acm.helper.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -46,7 +47,7 @@ public class Main
 					}
 					else
 					{
-						correctLine += " ";
+						correctedLine += " ";
 					}
 				}
 			}
